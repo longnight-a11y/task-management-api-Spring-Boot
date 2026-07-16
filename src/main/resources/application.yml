@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskdb
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update   # Base.metadata.create_all(bind=engine) に近い挙動（起動時にテーブル自動作成/更新）
+      # ddl-autoは本番では絶対つかうな！！本番はFlyway/LiquibaseっていうDB migration使う
+    properties:
+      hibernate:
+        format_sql: true
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:7fA92ksLQpwE1mXz8rRnY6PjT5wVsAbN2HxJkLmPoQrStUvWx}
+
+server:
+  port: 8080
