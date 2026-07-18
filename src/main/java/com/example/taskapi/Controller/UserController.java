@@ -5,6 +5,7 @@ import com.example.taskapi.dto.UserCreateRequest;
 import com.example.taskapi.dto.UserResponse;
 import com.example.taskapi.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class UserController {
 
     @PostMapping
     @Operation(summary = "Create User")
-    public UserResponse createUser(@RequestBody UserCreateRequest request){
+    public UserResponse createUser(@Valid @RequestBody UserCreateRequest request){
         return userService.createUser(request);
     }
 
