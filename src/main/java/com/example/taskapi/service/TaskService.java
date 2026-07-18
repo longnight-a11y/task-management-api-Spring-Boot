@@ -42,10 +42,11 @@ public class TaskService {
         return new PageResponse<>(items, (int) result.getTotalElements(), page, size);
     }
 
-    public List<TaskResponse> getMyTasks(UUID userId){
+    public PageResponse<TaskResponseWithUser> getMyTasks(int page, int size, UUID userId){
 
-        return taskRepository.findByUserId(userId).stream()
-                .map(this::toResponse).toList();
+        Page<Task> result = taskRepository.findByUserId(userId, PageRequest.of(page - 1, size));
+        List<TaskResponseWithUser> items = result.getContent().stream().map(this::toResponseWithUser).toList();
+        return new PageResponse<>(items, (int) result.getTotalElements(), page, size);
     }
 
     public TaskResponseWithUser getSingleTaskWithUser(UUID taskId){

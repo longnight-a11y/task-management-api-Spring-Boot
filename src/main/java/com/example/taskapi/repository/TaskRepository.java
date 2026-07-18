@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public interface TaskRepository extends JpaRepository<Task, UUID> {
 
-    List<Task> findByUserId(UUID userId);
+    Page<Task> findByUserId(UUID id, Pageable pageable);
 
     @Query("SELECT t FROM Task t JOIN FETCH t.user")
     Page<Task> findAllWithUser(Pageable pageable);
