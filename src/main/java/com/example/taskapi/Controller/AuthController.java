@@ -4,6 +4,7 @@ import com.example.taskapi.dto.LoginRequest;
 import com.example.taskapi.dto.LoginResponse;
 import com.example.taskapi.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class AuthController {
 
     @PostMapping("/login")
     @Operation(summary = "Login")
-    public LoginResponse login(@RequestBody LoginRequest request){
+    public LoginResponse login(@Valid @RequestBody LoginRequest request){
         return authService.login(request);
     }
 }
