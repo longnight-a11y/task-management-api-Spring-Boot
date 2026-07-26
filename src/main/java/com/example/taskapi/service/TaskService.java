@@ -36,7 +36,7 @@ public class TaskService {
     }
 
     public PageResponse<TaskResponseWithUser> getTasks(int page, int size){
-
+        // PageRequest.of()はPageRequestを簡単に作るためのメソッド
         Page<Task> result = taskRepository.findAllWithUser(PageRequest.of(page - 1, size));
         List<TaskResponseWithUser> items = result.getContent().stream().map(this::toResponseWithUser).toList();
         return new PageResponse<>(items, (int) result.getTotalElements(), page, size);
