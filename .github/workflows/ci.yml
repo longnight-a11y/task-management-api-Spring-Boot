@@ -39,6 +39,21 @@ jobs:
           java-version: "25"
           cache: maven
 
+      - name: Create application.yml
+        run: |
+          mkdir -p src/main/resources
+          cat <<EOF > src/main/resources/application.yml
+          spring:
+            datasource:
+              url: jdbc:postgresql://localhost:5432/taskdb
+              username: postgres
+              password: postgres
+
+          app:
+            jwt:
+              secret: test-secret-key-test-secret-key-test-secret-key
+          EOF
+
       - name: Build
         env:
           JWT_SECRET: test-secret-key-test-secret-key-test-secret-key
