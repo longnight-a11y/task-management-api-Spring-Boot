@@ -15,16 +15,15 @@ jobs:
 
     services:
       postgres:
-        image: postgres:18
+        image: postgres:17
         env:
-          POSTGRES_DB: jdbc:postgresql://localhost:5432/taskdb
-          DB_USERNAME: postgres
-          DB_PASSWORD: postgres
-          JWT_SECRET: test-secret-key-test-secret-key-test-secret-key
+          POSTGRES_DB: taskdb
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         ports:
           - 5432:5432
         options: >-
-          --health-cmd pg_ready
+          --health-cmd="pg_isready -U postgres"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -42,3 +41,8 @@ jobs:
 
       - name: Build
         run: mvn -B verify
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/taskdb
+          SPRING_DATASOURCE_USERNAME: postgres
+          SPRING_DATASOURCE_PASSWORD: postgres
+          JWT_SECRET: test-secret-key-test-secret-key-test-secret-key
