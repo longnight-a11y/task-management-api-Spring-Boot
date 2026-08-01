@@ -62,7 +62,8 @@ Every push and pull request automatically:
 - Maven | 3.x 
 - JWT | JJWT 
 - Password Hashing | Argon2 
-- OpenAPI | springdoc-openapi 
+- OpenAPI | springdoc-openapi
+- GitHub Actions
 ---
 
 ## API Endpoints
