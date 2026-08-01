@@ -1,3 +1,4 @@
+![CI](https://github.com/longnight-a11y/task-management-api-Spring-Boot/actions/workflows/ci.yml/badge.svg)
 # Task Management API
 
 ## Overview
@@ -38,6 +39,16 @@ While developing this application, I focused on:
 - Using pagination to display tasks for scalability
 - Clean architecture separating service and controller for maintainability
 - Bean validation prevents invalid user inputs
+
+---
+## CI
+
+### This project uses GitHub Actions for Continuous Integration.
+
+Every push and pull request automatically:
+- Builds the project
+- Runs unit tests
+- Verifies that the application can be compiled successfully
 
 ---
 ## Tech Stack
@@ -137,8 +148,7 @@ http://localhost:8080/swagger-ui/index.html
 - Docker support
 - Database Migration
 - Integration Tests
-- Unit Tests
-- GitHub Actions CI
+- Increase unit test coverage
 
 ---
 ## Author
